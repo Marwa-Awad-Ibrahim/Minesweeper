@@ -5,7 +5,7 @@ const CHEAT_REVEAL_ALL = false;
 
 const ROWS_COUNT = 10;
 const COLS_COUNT = 10;
-const BOMBS_COUNT = 20;
+const BOMBS_COUNT = 10;
 
 var defeat = false;
 var victory = false;
@@ -31,8 +31,6 @@ for (var row = 0; row < ROWS_COUNT; row++) {
     }
 }
 
-
-//
 // TODO: Task 1 - add some bombs at fixed positions.
 
 // cells[0][0].isBomb = true;
@@ -54,7 +52,6 @@ for (i = 0; i <= BOMBS_COUNT; i++) {
 render();
 
 
-//
 // Game functions definitions
 //
 
@@ -134,32 +131,36 @@ function countAdjacentBombs(row, col) {
     //
     
 
+// TODO: Task 9 - Implement stats: the counters currently always display 0, calculate and return the relevant values.
 
 function getBombsCount() {
-    //
-    // TODO: Task 9 - Implement stats: the counters currently always display 0, calculate and return the relevant values.
-    //
-    return 0;
+    
+    return BOMBS_COUNT;
 }
 
 function getClearedCells() {
-    //
-    // TODO: Task 9 - Implement stats: the counters currently always display 0, calculate and return the relevant values.
-    //
-    return 0;
+    let ClearedCellCount = 0;
+    
+        for (let row = 0; row < ROWS_COUNT; row++) {
+            for (let col = 0; col < COLS_COUNT; col++) {
+                if (cells[row][col].discovered) {
+                    ClearedCellCount++;
+                }
+            }
+        }
+    return ClearedCellCount;
 }
-
+   
 function getTotalCellsToClear() {
-    //
-    // TODO: Task 9 - Implement stats: the counters currently always display 0, calculate and return the relevant values.
-    //
-    return 0;
+    let TotalCellsToClear = (ROWS_COUNT * COLS_COUNT)-BOMBS_COUNT
+    return TotalCellsToClear;
 }
 
+// TODO: Task 10 - Implement victory. If the player has revealed as many cells as they must (every cell that isn't a
+    //                 bomb), set variable victory to true.
 function checkForVictory() {
     //
-    // TODO: Task 10 - Implement victory. If the player has revealed as many cells as they must (every cell that isn't a
-    //                 bomb), set variable victory to true.
+    
     //
     return 0;
 }
