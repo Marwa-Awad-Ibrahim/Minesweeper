@@ -3,9 +3,9 @@
 // having to click on all cells to reveal them.
 const CHEAT_REVEAL_ALL = true;
 
-const ROWS_COUNT = 10;
-const COLS_COUNT = 10;
-const BOMBS_COUNT = 10;
+const ROWS_COUNT = 5;
+const COLS_COUNT = 5;
+const BOMBS_COUNT = 5;
 
 var defeat = false;
 var victory = false;
@@ -42,7 +42,7 @@ for (var row = 0; row < ROWS_COUNT; row++) {
 //                other constants.
 
 for(i=0; i<= BOMBS_COUNT; i++){
-cells[Math.floor(Math.random()*10)][Math.floor(Math.random()*10)].isBomb = true;}
+cells[Math.floor(Math.random()*4)][Math.floor(Math.random()*4)].isBomb = true;}
 
 // Once the game has been initialized, we "render" it.
 render();
