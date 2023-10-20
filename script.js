@@ -1,7 +1,7 @@
 
 // Set this constant to true to debug the placement of bombs without
 // having to click on all cells to reveal them.
-const CHEAT_REVEAL_ALL = true;
+const CHEAT_REVEAL_ALL = false;
 
 const ROWS_COUNT = 10;
 const COLS_COUNT = 10;
@@ -54,7 +54,7 @@ render();
 //
 
 function discoverCell(row, col) {
-    //
+    cells[row][col].discovered = true;
     // TODO: Task 5 - Reveal cells when clicked.
     //
 
