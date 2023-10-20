@@ -44,8 +44,8 @@ for (var row = 0; row < ROWS_COUNT; row++) {
 //                Add a BOMBS_COUNT constant so that you can easily change the amount of bombs placed. Put it next to the
 //                other constants.
 
-for (i = 0; i <= BOMBS_COUNT; i++) {
-    cells[Math.floor(Math.random() * 10)][Math.floor(Math.random() * 10)].isBomb = true;
+for (i = 0; i < BOMBS_COUNT; i++) {
+    cells[Math.floor(Math.random() * ROWS_COUNT)][Math.floor(Math.random() * COLS_COUNT)].isBomb = true;
 }
 
 // Once the game has been initialized, we "render" it.
@@ -133,16 +133,14 @@ function countAdjacentBombs(row, col) {
 
 // TODO: Task 9 - Implement stats: the counters currently always display 0, calculate and return the relevant values.
 
-function getBombsCount() {
-    
+function getBombsCount() {  
     return BOMBS_COUNT;
 }
 
 function getClearedCells() {
     let ClearedCellCount = 0;
-    
-        for (let row = 0; row < ROWS_COUNT; row++) {
-            for (let col = 0; col < COLS_COUNT; col++) {
+        for (let row = 0; row <= ROWS_COUNT-1; row++) {
+            for (let col = 0; col <= COLS_COUNT-1; col++) {
                 if (cells[row][col].discovered) {
                     ClearedCellCount++;
                 }
@@ -159,11 +157,12 @@ function getTotalCellsToClear() {
 // TODO: Task 10 - Implement victory. If the player has revealed as many cells as they must (every cell that isn't a
     //                 bomb), set variable victory to true.
 function checkForVictory() {
-    //
-    
-    //
-    return 0;
-}
+   let Clearcells = getClearedCells();
+    let totalCells = getTotalCellsToClear();
+    if(Clearcells === totalCells)
+    victory = true;
+   }
+
 
 //
 // Rendering functions
