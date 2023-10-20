@@ -10,6 +10,11 @@ const BOMBS_COUNT = 20;
 var defeat = false;
 var victory = false;
 
+let header = document.querySelector("header")
+let p = document.createElement("p");
+p.textContent = "You can place flags on the cell by holding shift";
+header.appendChild(p);
+
 // Cell constructor
 function Cell() {
     this.discovered = false;
@@ -63,7 +68,7 @@ function discoverCell(row, col) {
     if(cells[row][col].discovered){
         return;
     }
-    if(!cells[row][col].isBomb){
+    if(!cells[row][col].isBomb && !cells[row][col].hasBeenFlagged){
     cells[row][col].discovered = true;}
     else{
         return;
@@ -77,17 +82,21 @@ function discoverCell(row, col) {
     discoverCell(row-1,col);
     discoverCell(row+1,col);
     discoverCell(row,col+1);
-
+}
     // TODO: Task 5 - Reveal cells when clicked.
-    //
     // TODO: Task 6 - Discover neighbor cells recursively, as long as there are no adjacent bombs to the current cell.
-    
-    
-    }
+
     // TODO: Task 8 - Implement defeat. If the player "discovers" a bomb (clicks on it without holding shift), set the variable defeat to true.
     //
 function flagCell(row, col) {
-    cells[row][col].hasBeenFlagged = true;
+    if(cells[row][col].hasBeenFlagged === true){
+        cells[row][col].hasBeenFlagged = false;
+    }
+    else{
+        cells[row][col].hasBeenFlagged = true;
+    }
+    
+    
     // TODO: Task 7 - Implement flags. Flags allow the player to mark cells that they think contain a bomb.
     //                When clicking a cell and holding shift, function flagCell() will be called for you.
     //
