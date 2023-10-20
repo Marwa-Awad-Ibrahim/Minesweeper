@@ -68,11 +68,15 @@ function discoverCell(row, col) {
     if(cells[row][col].discovered){
         return;
     }
-    if(!cells[row][col].isBomb && !cells[row][col].hasBeenFlagged){
+    if(!cells[row][col].hasBeenFlagged){
     cells[row][col].discovered = true;}
     else{
         return;
     }
+    if(cells[row][col].isBomb && cells[row][col].discovered){
+        defeat = true;
+    }
+
     let adjBombs = countAdjacentBombs(row, col);
     if(adjBombs > 0){
         return;
@@ -83,6 +87,7 @@ function discoverCell(row, col) {
     discoverCell(row+1,col);
     discoverCell(row,col+1);
 }
+
     // TODO: Task 5 - Reveal cells when clicked.
     // TODO: Task 6 - Discover neighbor cells recursively, as long as there are no adjacent bombs to the current cell.
 
